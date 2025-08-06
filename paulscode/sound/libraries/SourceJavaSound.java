@@ -1,15 +1,15 @@
-package paulscode.sound.libraries;
+package sound.libraries;
 
 import java.util.LinkedList;
 import javax.sound.sampled.AudioFormat;
 
-import paulscode.sound.Channel;
-import paulscode.sound.FilenameURL;
-import paulscode.sound.ListenerData;
-import paulscode.sound.SoundBuffer;
-import paulscode.sound.Source;
-import paulscode.sound.SoundSystemConfig;
-import paulscode.sound.Vector3D;
+import sound.Channel;
+import sound.FilenameURL;
+import sound.ListenerData;
+import sound.SoundBuffer;
+import sound.Source;
+import sound.SoundSystemConfig;
+import sound.Vector3D;
 
 /**
  * The SourceJavaSound class provides an interface to the JavaSound library.  
@@ -33,7 +33,7 @@ import paulscode.sound.Vector3D;
  *<br>
  *    4) You are not required to give me credit for this library in any derived
  *    work, but if you do, you must also mention my website:
- *    http://www.paulscode.com
+ *    http://www.com
  *<br>
  *    5) I the author will not be responsible for any damages (physical,
  *    financial, or otherwise) caused by the use if this library or any part
@@ -45,7 +45,7 @@ import paulscode.sound.Vector3D;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  * </b>
  */
 public class SourceJavaSound extends Source

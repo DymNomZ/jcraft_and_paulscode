@@ -1,4 +1,4 @@
-package paulscode.sound.libraries;
+package sound.libraries;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,9 +11,9 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.Mixer;
 import javax.sound.sampled.SourceDataLine;
 
-import paulscode.sound.Channel;
-import paulscode.sound.SoundBuffer;
-import paulscode.sound.SoundSystemConfig;
+import sound.Channel;
+import sound.SoundBuffer;
+import sound.SoundSystemConfig;
 
 /**
  * The ChannelJavaSound class is used to reserve a sound-card voice using 
@@ -39,7 +39,7 @@ import paulscode.sound.SoundSystemConfig;
  *<br>
  *    4) You are not required to give me credit for this library in any derived
  *    work, but if you do, you must also mention my website:
- *    http://www.paulscode.com
+ *    http://www.com
  *<br>
  *    5) I the author will not be responsible for any damages (physical,
  *    financial, or otherwise) caused by the use if this library or any part
@@ -51,7 +51,7 @@ import paulscode.sound.SoundSystemConfig;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  * </b>
  */
 public class ChannelJavaSound extends Channel
@@ -62,7 +62,7 @@ public class ChannelJavaSound extends Channel
  */
     public Clip clip = null;
 /**
- * The paulscode.sound.LibraryJavaSound.SoundBuffer containing the sound data 
+ * The sound.LibraryJavaSound.SoundBuffer containing the sound data 
  * to play for a normal source.
  */
     SoundBuffer soundBuffer;
@@ -74,7 +74,7 @@ public class ChannelJavaSound extends Channel
  */    
     public SourceDataLine sourceDataLine = null;
 /**
- * List of paulscode.sound.LibraryJavaSound.SoundBuffer, used to queue chunks 
+ * List of sound.LibraryJavaSound.SoundBuffer, used to queue chunks 
  * of sound data to be streamed.
  */
     private List<SoundBuffer> streamBuffers;
@@ -127,7 +127,7 @@ public class ChannelJavaSound extends Channel
 /**
  * Constructor:  takes channelType identifier and a handle to the Mixer as 
  * paramaters.  Possible values for channel type can be found in the 
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} class.
+ * {@link sound.SoundSystemConfig SoundSystemConfig} class.
  * @param type Type of channel (normal or streaming).
  * @param mixer Handle to the JavaSound Mixer.
  */
@@ -689,7 +689,7 @@ public class ChannelJavaSound extends Channel
  
 /**
  * Plays the next queued byte[] buffer.  This method is run from the seperate 
- * {@link paulscode.sound.StreamThread StreamThread}.
+ * {@link sound.StreamThread StreamThread}.
  * @return False when no more buffers are left to process.
  */
     @Override
