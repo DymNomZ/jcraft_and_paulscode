@@ -63,6 +63,13 @@ import sound.SoundSystemException;
  */
 public class LibraryJavaSound extends Library
 {
+
+    static String G_TARGET_MIXER_NAME = null;
+
+    public static void setMixer(String mixerName) {
+        G_TARGET_MIXER_NAME = mixerName;
+    }
+
 /**
  * Used to return a current value from one of the synchronized interface
  * methods.

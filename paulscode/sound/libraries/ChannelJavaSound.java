@@ -309,74 +309,159 @@ public class ChannelJavaSound extends Channel
  * @param format Format to use when playing the stream data.
  * @return False if an error occurred.
  */
-    public boolean resetStream( AudioFormat format )
-    {
-        // make sure the Mixer exists:
-        if( errorCheck( myMixer == null,
-                        "Mixer null in method 'resetStream'" ) )
-            return false;
-        
-        // make sure a format was specified:
-        if( errorCheck( format == null,
-                        "AudioFormat null in method 'resetStream'" ) )
-            return false;
-        
-        DataLine.Info lineInfo;
-        lineInfo = new DataLine.Info( SourceDataLine.class, format );
-        if( errorCheck( !AudioSystem.isLineSupported( lineInfo ), 
-                        "Line not supported in method 'resetStream'" ) )
-            return false;
-        
-        SourceDataLine newSourceDataLine = null;
-        try
-        {
-            newSourceDataLine = (SourceDataLine) myMixer.getLine( lineInfo );
+//modified version
+public boolean resetStream(AudioFormat format) {
+    // make sure the Mixer exists
+    if (errorCheck(myMixer == null, "Mixer null in method 'resetStream'"))
+        return false;
+
+    // make sure a format was specified
+    if (errorCheck(format == null, "AudioFormat null in method 'resetStream'"))
+        return false;
+
+    DataLine.Info lineInfo;
+    lineInfo = new DataLine.Info(SourceDataLine.class, format);
+
+    if (errorCheck(!AudioSystem.isLineSupported(lineInfo), "Line not supported in method 'resetStream'"))
+        return false;
+
+    SourceDataLine newSourceDataLine = null;
+    try {
+        // --- THIS IS THE MODIFIED BLOCK ---
+
+        Mixer mixer = null; // We will try to find a specific mixer
+
+        // Check if a target mixer name was set in our new static method from LibraryJavaSound
+        if (LibraryJavaSound.G_TARGET_MIXER_NAME != null) {
+            Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
+            for (Mixer.Info info : mixerInfo) {
+                if (info.getName().equals(LibraryJavaSound.G_TARGET_MIXER_NAME)) {
+                    mixer = AudioSystem.getMixer(info);
+                    break; // Found it!
+                }
+            }
         }
-        catch( Exception e )
-        {
-            errorMessage( "Unable to create a SourceDataLine " +
-                          "in method 'resetStream'" );
-            printStackTrace( e );
-            return false;
+
+        if (mixer != null) {
+            // A specific mixer was found, get the line from IT.
+            // logger.message("ChannelJavaSound: Using specified mixer: " + mixer.getMixerInfo().getName(), 0);
+            newSourceDataLine = (SourceDataLine) mixer.getLine(lineInfo);
+        } else {
+            // No specific mixer was found or set, use the original default behavior.
+            // logger.message("ChannelJavaSound: Using default mixer.", 0);
+            newSourceDataLine = (SourceDataLine) AudioSystem.getLine(lineInfo);
         }
-        
-        if( errorCheck( newSourceDataLine == null,
-                        "New SourceDataLine null in method 'resetStream'" ) )
-            return false;
-        
-        streamBuffers.clear();
-        processed = 0;
-        
-        // if there was already something playing on this channel, remove it:
-        if( sourceDataLine != null )
-        {
-            sourceDataLine.stop();
-            sourceDataLine.flush();
-            sourceDataLine.close();
-        }
-        
-        // Update the clip and format varriables:
-        sourceDataLine = newSourceDataLine;  
-        myFormat = format;
-        newSourceDataLine = null;
-        
-        try
-        {
-            sourceDataLine.open( myFormat );
-        }
-        catch( Exception e )
-        {
-            errorMessage( "Unable to open the new SourceDataLine in method " +
-                          "'resetStream'" );
-            printStackTrace( e );
-            return false;
-        }
-        
-        resetControls();
-        
-        // Success:
-        return true;
+        // --- END OF MODIFIED BLOCK ---
+
+    } catch (Exception e) {
+        errorMessage("Unable to create a SourceDataLine in method 'resetStream'");
+        printStackTrace(e);
+        return false;
     }
+
+    if (errorCheck(newSourceDataLine == null, "New SourceDataLine null in method 'resetStream'"))
+        return false;
+
+    // --- The rest of your method is PERFECT and should not be changed ---
+
+    streamBuffers.clear();
+    processed = 0;
+
+    // if there was already something playing
+    if (sourceDataLine != null) {
+        sourceDataLine.stop();
+        sourceDataLine.flush();
+        sourceDataLine.close();
+    }
+
+    // Update the clip and format
+    sourceDataLine = newSourceDataLine;
+    myFormat = format;
+    newSourceDataLine = null;
+
+    try {
+        sourceDataLine.open(myFormat);
+    } catch (Exception e) {
+        errorMessage("Unable to open the SourceDataLine in method 'resetStream'");
+        printStackTrace(e);
+        return false;
+    }
+
+    resetControls();
+
+    // Success:
+    return true;
+}
+
+// original resetStream
+//    public boolean resetStream( AudioFormat format )
+//    {
+//        // make sure the Mixer exists:
+//        if( errorCheck( myMixer == null,
+//                        "Mixer null in method 'resetStream'" ) )
+//            return false;
+//
+//        // make sure a format was specified:
+//        if( errorCheck( format == null,
+//                        "AudioFormat null in method 'resetStream'" ) )
+//            return false;
+//
+//        DataLine.Info lineInfo;
+//        lineInfo = new DataLine.Info( SourceDataLine.class, format );
+//        if( errorCheck( !AudioSystem.isLineSupported( lineInfo ),
+//                        "Line not supported in method 'resetStream'" ) )
+//            return false;
+//
+//        SourceDataLine newSourceDataLine = null;
+//        try
+//        {
+//            newSourceDataLine = (SourceDataLine) myMixer.getLine( lineInfo );
+//        }
+//        catch( Exception e )
+//        {
+//            errorMessage( "Unable to create a SourceDataLine " +
+//                          "in method 'resetStream'" );
+//            printStackTrace( e );
+//            return false;
+//        }
+//
+//        if( errorCheck( newSourceDataLine == null,
+//                        "New SourceDataLine null in method 'resetStream'" ) )
+//            return false;
+//
+//        streamBuffers.clear();
+//        processed = 0;
+//
+//        // if there was already something playing on this channel, remove it:
+//        if( sourceDataLine != null )
+//        {
+//            sourceDataLine.stop();
+//            sourceDataLine.flush();
+//            sourceDataLine.close();
+//        }
+//
+//        // Update the clip and format varriables:
+//        sourceDataLine = newSourceDataLine;
+//        myFormat = format;
+//        newSourceDataLine = null;
+//
+//        try
+//        {
+//            sourceDataLine.open( myFormat );
+//        }
+//        catch( Exception e )
+//        {
+//            errorMessage( "Unable to open the new SourceDataLine in method " +
+//                          "'resetStream'" );
+//            printStackTrace( e );
+//            return false;
+//        }
+//
+//        resetControls();
+//
+//        // Success:
+//        return true;
+//    }
     
 /**
  * (Re)Creates the pan and gain controls for this channel.
