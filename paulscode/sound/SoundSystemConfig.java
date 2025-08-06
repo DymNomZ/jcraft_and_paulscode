@@ -406,7 +406,7 @@ public class SoundSystemConfig
  * been created, there will be handles floating around to two different 
  * loggers, and the results will be undesirable.  This method can be used to 
  * change how messages are handled.  First, the 
- * {@link paulscode.sound.SoundSystemLogger SoundSystemLogger} class should be 
+ * {@link sound.SoundSystemLogger SoundSystemLogger} class should be
  * extended and methods overriden to change how messages are handled.  Then, 
  * the overridden class should be instantiated, and a call made to 
  * SoundSystemConfig.setLogger() before creating the SoundSystem object.  

@@ -274,7 +274,7 @@ public class Library
 /**
  * Creates a new channel of the specified type (normal or streaming).  Possible 
  * values for channel type can be found in the 
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} class.
+ * {@link sound.SoundSystemConfig SoundSystemConfig} class.
  * @param type Type of channel.
  * @return The new channel.
  */
