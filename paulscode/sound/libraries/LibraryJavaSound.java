@@ -1,4 +1,4 @@
-package paulscode.sound.libraries;
+package sound.libraries;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
@@ -14,15 +14,15 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Set;
 
-import paulscode.sound.Channel;
-import paulscode.sound.FilenameURL;
-import paulscode.sound.ICodec;
-import paulscode.sound.Library;
-import paulscode.sound.Source;
-import paulscode.sound.SoundBuffer;
-import paulscode.sound.SoundSystem;
-import paulscode.sound.SoundSystemConfig;
-import paulscode.sound.SoundSystemException;
+import sound.Channel;
+import sound.FilenameURL;
+import sound.ICodec;
+import sound.Library;
+import sound.Source;
+import sound.SoundBuffer;
+import sound.SoundSystem;
+import sound.SoundSystemConfig;
+import sound.SoundSystemException;
 
 /**
  * The LibraryJavaSound class interfaces the JavaSound library.  
@@ -46,7 +46,7 @@ import paulscode.sound.SoundSystemException;
  *<br>
  *    4) You are not required to give me credit for this library in any derived
  *    work, but if you do, you must also mention my website:
- *    http://www.paulscode.com
+ *    http://www.com
  *<br>
  *    5) I the author will not be responsible for any damages (physical,
  *    financial, or otherwise) caused by the use if this library or any part
@@ -58,7 +58,7 @@ import paulscode.sound.SoundSystemException;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  * </b>
  */
 public class LibraryJavaSound extends Library
@@ -241,7 +241,7 @@ public class LibraryJavaSound extends Library
 /**
  * Creates a new channel of the specified type (normal or streaming).  Possible 
  * values for channel type can be found in the 
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} class.
+ * {@link sound.SoundSystemConfig SoundSystemConfig} class.
  * @param type Type of channel.
  */
     @Override
