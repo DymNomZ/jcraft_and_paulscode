@@ -1,4 +1,4 @@
-package paulscode.sound;
+package sound;
 
 /**
  * The Vector3D class contains methods to simplify common 3D vector functions,

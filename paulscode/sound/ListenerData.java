@@ -1,10 +1,10 @@
-package paulscode.sound;
+package sound;
 
 /**
  * The listenerData class is used to store information about the 
  * listener's position and orientation.  A ListenerData object can be obtained 
  * using SoundSystem's getListenerData() method.  See 
- * {@link paulscode.sound.Vector3D Vector3D} for more information about 3D 
+ * {@link sound.Vector3D Vector3D} for more information about 3D
  * coordinates and vectors.
  *<br><br>
  *<b><i>    SoundSystem License:</b></i><br><b><br>

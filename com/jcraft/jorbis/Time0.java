@@ -24,9 +24,9 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jorbis;
+package jcraft.jorbis;
 
-import com.jcraft.jogg.*;
+import jcraft.jogg.*;
 
 class Time0 extends FuncTime{
   void pack(Object i, Buffer opb){

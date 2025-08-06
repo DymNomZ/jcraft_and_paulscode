@@ -24,9 +24,9 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jorbis;
+package jcraft.jorbis;
 
-import com.jcraft.jogg.*;
+import jcraft.jogg.*;
 
 // Takes a vorbis bitstream from stdin and writes raw stereo PCM to
 // stdout.  Decodes simple and chained OggVorbis files from beginning

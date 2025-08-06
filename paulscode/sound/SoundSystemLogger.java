@@ -1,4 +1,4 @@
-package paulscode.sound;
+package sound;
 
 /**
  * The SoundSystemLogger class handles all status messages, warnings, and error 
@@ -9,7 +9,7 @@ package paulscode.sound;
  * the setLogger() method is called after the SoundSystem has been created, 
  * there will be handles floating around to two different message loggers, and 
  * the results will be undesirable.  
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more 
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more 
  * information about changing default settings.  If an alternate logger is not 
  * set by the user, then an instance of this base class will be automatically
  * created by default when the SoundSystem class is instantiated.
@@ -31,7 +31,7 @@ package paulscode.sound;
  *<br>
  *    4) You are not required to give me credit for this library in any derived
  *    work, but if you do, you must also mention my website:
- *    http://www.paulscode.com
+ *    http://www.com
  *<br>
  *    5) I the author will not be responsible for any damages (physical,
  *    financial, or otherwise) caused by the use if this library or any part
@@ -43,7 +43,7 @@ package paulscode.sound;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  * </b>
  */
 public class SoundSystemLogger

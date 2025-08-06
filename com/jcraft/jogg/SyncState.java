@@ -24,7 +24,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jogg;
+package jcraft.jogg;
 
 // DECODING PRIMITIVES: packet streaming layer
 

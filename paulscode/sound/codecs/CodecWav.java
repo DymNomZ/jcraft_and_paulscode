@@ -1,4 +1,4 @@
-package paulscode.sound.codecs;
+package sound.codecs;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -11,10 +11,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import paulscode.sound.ICodec;
-import paulscode.sound.SoundBuffer;
-import paulscode.sound.SoundSystemConfig;
-import paulscode.sound.SoundSystemLogger;
+import sound.ICodec;
+import sound.SoundBuffer;
+import sound.SoundSystemConfig;
+import sound.SoundSystemLogger;
 
 /**
  * The CodecWav class provides an ICodec interface for reading from .wav files.
@@ -36,7 +36,7 @@ import paulscode.sound.SoundSystemLogger;
  *<br>
  *    4) You are not required to give me credit for this class in any derived
  *    work, but if you do, you must also mention my website:
- *    http://www.paulscode.com
+ *    http://www.com
  *<br>
  *    5) I the author will not be responsible for any damages (physical,
  *    financial, or otherwise) caused by the use if this class or any portion
@@ -48,7 +48,7 @@ import paulscode.sound.SoundSystemLogger;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  * </b>
  */
 public class CodecWav implements ICodec
@@ -158,7 +158,7 @@ public class CodecWav implements ICodec
 
 /**
  * Reads in one stream buffer worth of audio data.  See
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about accessing and changing default settings.
  * @return The audio data wrapped into a SoundBuffer context.
  */
@@ -231,7 +231,7 @@ public class CodecWav implements ICodec
 /**
  * Reads in all the audio data from the stream (up to the default
  * "maximum file size".  See
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about accessing and changing default settings.
  * @return the audio data wrapped into a SoundBuffer context.
  */

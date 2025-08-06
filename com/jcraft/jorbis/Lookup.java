@@ -24,7 +24,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jorbis;
+package jcraft.jorbis;
 
 class Lookup{
   static final int COS_LOOKUP_SZ=128;

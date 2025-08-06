@@ -1,4 +1,4 @@
-package paulscode.sound;
+package sound;
 
 import java.net.URL;
 import javax.sound.sampled.AudioFormat;
@@ -80,7 +80,7 @@ public interface ICodec
 
 /**
  * Should read in one stream buffer worth of audio data.  See
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about accessing and changing default settings.
  * @return The audio data wrapped into a SoundBuffer context.
  */
@@ -89,7 +89,7 @@ public interface ICodec
 /**
  * Should read in all the audio data from the stream (up to the default
  * "maximum file size".  See
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about accessing and changing default settings.
  * @return the audio data wrapped into a SoundBuffer context.
  */

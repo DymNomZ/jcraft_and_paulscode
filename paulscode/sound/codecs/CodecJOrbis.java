@@ -1,4 +1,4 @@
-package paulscode.sound.codecs;
+package sound.codecs;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,19 +8,19 @@ import java.net.UnknownServiceException;
 import javax.sound.sampled.AudioFormat;
 
 // From the JOrbis library, http://www.jcraft.com/jorbis/
-import com.jcraft.jogg.Packet;
-import com.jcraft.jogg.Page;
-import com.jcraft.jogg.StreamState;
-import com.jcraft.jogg.SyncState;
-import com.jcraft.jorbis.DspState;
-import com.jcraft.jorbis.Block;
-import com.jcraft.jorbis.Comment;
-import com.jcraft.jorbis.Info;
+import jcraft.jogg.Packet;
+import jcraft.jogg.Page;
+import jcraft.jogg.StreamState;
+import jcraft.jogg.SyncState;
+import jcraft.jorbis.DspState;
+import jcraft.jorbis.Block;
+import jcraft.jorbis.Comment;
+import jcraft.jorbis.Info;
 
-import paulscode.sound.ICodec;
-import paulscode.sound.SoundBuffer;
-import paulscode.sound.SoundSystemConfig;
-import paulscode.sound.SoundSystemLogger;
+import sound.ICodec;
+import sound.SoundBuffer;
+import sound.SoundSystemConfig;
+import sound.SoundSystemLogger;
 
 /**
  * The CodecJOrbis class provides an ICodec interface to the external JOrbis
@@ -42,7 +42,7 @@ import paulscode.sound.SoundSystemLogger;
  *<br>
  *    4) You are not required to give me credit for this class in any derived
  *    work, but if you do, you must also mention my website:
- *    http://www.paulscode.com
+ *    http://www.com
  *<br>
  *    5) I the author will not be responsible for any damages (physical,
  *    financial, or otherwise) caused by the use if this class or any portion
@@ -54,7 +54,7 @@ import paulscode.sound.SoundSystemLogger;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  *</b><br><br>
  *<b>
  *    This software is based on or using the JOrbis library available from
@@ -64,7 +64,7 @@ import paulscode.sound.SoundSystemLogger;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  * </b><br><br>
  */
 public class CodecJOrbis implements ICodec
@@ -339,7 +339,7 @@ public class CodecJOrbis implements ICodec
 
 /**
  * Reads in one stream buffer worth of audio data.  See
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about accessing and changing default settings.
  * @return The audio data wrapped into a SoundBuffer context.
  */
@@ -365,7 +365,7 @@ public class CodecJOrbis implements ICodec
 /**
  * Reads in all the audio data from the stream (up to the default
  * "maximum file size".  See
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about accessing and changing default settings.
  * @return the audio data wrapped into a SoundBuffer context.
  */

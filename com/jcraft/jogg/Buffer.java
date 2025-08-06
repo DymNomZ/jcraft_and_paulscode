@@ -24,7 +24,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jogg;
+package jcraft.jogg;
 
 public class Buffer{
   private static final int BUFFER_INCREMENT=256;

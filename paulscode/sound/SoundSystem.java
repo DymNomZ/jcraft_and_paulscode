@@ -1,4 +1,4 @@
-package paulscode.sound;
+package sound;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ import javax.sound.sampled.AudioFormat;
  * There should be only one instance of this class in any program!  The
  * SoundSystem can be constructed by defining which sound library to use, or by
  * allowing SoundSystem to perform its own library compatibility checking.  See
- * {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for information 
+ * {@link sound.SoundSystemConfig SoundSystemConfig} for information 
  * about changing default settings and linking with external pluggins.
  *<br><br>
  *<b><i>    SoundSystem License:</b></i><br><b><br>
@@ -44,7 +44,7 @@ import javax.sound.sampled.AudioFormat;
  *<br>
  *    4) You are not required to give me credit for this library in any derived
  *    work, but if you do, you must also mention my website:
- *    http://www.paulscode.com
+ *    http://www.com
  *<br>
  *    5) I the author will not be responsible for any damages (physical,
  *    financial, or otherwise) caused by the use if this library or any part
@@ -56,7 +56,7 @@ import javax.sound.sampled.AudioFormat;
  * <br><br>
  *    Author: Paul Lamb
  * <br>
- *    http://www.paulscode.com
+ *    http://www.com
  * </b>
  */
 public class SoundSystem
@@ -133,7 +133,7 @@ public class SoundSystem
  * Constructor: Create the sound system using the default library.  If the 
  * default library is not compatible, another library type will be loaded 
  * instead, in the order of library preference.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for 
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for 
  * information about sound library types.
  */
     public SoundSystem()
@@ -183,7 +183,7 @@ public class SoundSystem
 /**
  * Constructor: Create the sound system using the specified library.  
  * @param libraryClass Library to use.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for
  * information about chosing a sound library.
  */
     public SoundSystem( Class libraryClass ) throws SoundSystemException
@@ -205,7 +205,7 @@ public class SoundSystem
  * Links with any default libraries or codecs should be made in this method.
  * This method is empty in the core SoundSystem class, and should be overriden
  * by classes which extend SoundSystem.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for
  * information about linking with sound libraries and codecs.
  */
     protected void linkDefaultLibrariesAndCodecs()
@@ -217,7 +217,7 @@ public class SoundSystem
  * starts the command thread.  Also instantiates the random number generator 
  * and the command queue.
  * @param libraryClass Library to initialize.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for
  * information about chosing a sound library.
  */
     protected void init( Class libraryClass ) throws SoundSystemException
@@ -326,7 +326,7 @@ public class SoundSystem
         sourcePlayList = null;
         commandThread = null;
         
-        importantMessage( "Author: Paul Lamb, www.paulscode.com", 1 );
+        importantMessage( "Author: Paul Lamb, www.com", 1 );
         message( "", 0 );
     }
 
@@ -667,7 +667,7 @@ public class SoundSystem
     
 /**
  * Creates a new non-streaming source.  
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Attenuation, fade distance, and rolloff factor.  
  * @param priority Setting this to true will prevent other sounds from overriding this one.
  * @param sourcename A unique identifier for this source.  Two sources may not use the same sourcename.
@@ -692,7 +692,7 @@ public class SoundSystem
 
 /**
  * Creates a new non-streaming source.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Attenuation, fade distance, and rolloff factor.
  * @param priority Setting this to true will prevent other sounds from overriding this one.
  * @param sourcename A unique identifier for this source.  Two sources may not use the same sourcename.
@@ -1047,7 +1047,7 @@ public class SoundSystem
     }
 /**
  * Changes a source's attenuation model.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Attenuation.  
  * @param sourcename Identifier for the source.
  * @param model Attenuation model to use.
@@ -1060,7 +1060,7 @@ public class SoundSystem
     }
 /**
  * Changes a source's fade distance or rolloff factor.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about fade distance and rolloff.  
  * @param sourcename Identifier for the source.
  * @param dr Either the fading distance or rolloff factor, depending on the attenuation model used.
@@ -1074,7 +1074,7 @@ public class SoundSystem
 
 /**
  * Changes the Doppler factor, for determining Doppler effect scale.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param dopplerFactor New value for Doppler factor.
  */
@@ -1087,7 +1087,7 @@ public class SoundSystem
 
 /**
  * Changes the Doppler velocity, for use in Doppler effect.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param dopplerVelocity New value for Doppler velocity.
  */
@@ -1100,7 +1100,7 @@ public class SoundSystem
 
 /**
  * Sets the specified source's velocity, for use in Doppler effect.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param sourcename The source's name.
  * @param x Velocity along world x-axis.
@@ -1116,7 +1116,7 @@ public class SoundSystem
     
 /**
  * Sets the listener's velocity, for use in Doppler effect.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param x Velocity along world x-axis.
  * @param y Velocity along world y-axis.
@@ -1342,7 +1342,7 @@ public class SoundSystem
 /**
  * Method for obtaining information about the listener's position and 
  * orientation.  
- * @return a {@link paulscode.sound.ListenerData ListenerData} object.
+ * @return a {@link sound.ListenerData ListenerData} object.
  */
     public ListenerData getListenerData()
     {
@@ -1355,7 +1355,7 @@ public class SoundSystem
  * Switches to the specified library, and preserves all sources.  
  * @param libraryClass Library to use.
  * @return True if switch was successful.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for
  * information about chosing a sound library.
  */
     public boolean switchLibrary( Class libraryClass )
@@ -1464,7 +1464,7 @@ public class SoundSystem
 /**
  * Switches to the specified library, loosing all sources.  
  * @param libraryClass Library to use.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for
  * information about chosing a sound library.
  */
     public boolean newLibrary( Class libraryClass )
@@ -1505,7 +1505,7 @@ public class SoundSystem
  * internally by SoundSystem for thread synchronization, and it can not be
  * called directly - please use the newLibrary() method instead.
  * @param libraryClass Library to use.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for
  * information about chosing a sound library.
  */
     private void CommandNewLibrary( Class libraryClass )
@@ -1955,7 +1955,7 @@ public class SoundSystem
  * Changes a source's attenuation model.  This method is used
  * internally by SoundSystem for thread synchronization, and it can not be
  * called directly - please use the setAttenuation() method instead.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Attenuation.  
  * @param sourcename Identifier for the source.
  * @param model Attenuation model to use.
@@ -1971,7 +1971,7 @@ public class SoundSystem
     }
 /**
  * Changes a source's fade distance or rolloff factor.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about fade distance and rolloff.  
  * @param sourcename Identifier for the source.
  * @param dr Either the fading distance or rolloff factor, depending on the attenuation model used.
@@ -1989,7 +1989,7 @@ public class SoundSystem
  * Changes the Doppler factor.  This method is used internally by SoundSystem
  * for thread synchronization, and it can not be called directly - please use
  * the setDopplerFactor() method instead.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param dopplerFactor New Doppler factor, for determining Doppler effect scale.
  */
@@ -2009,7 +2009,7 @@ public class SoundSystem
  * Changes the Doppler velocity.  This method is used internally by SoundSystem
  * for thread synchronization, and it can not be called directly - please use
  * the setDopplerVelocity() method instead.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param dopplerVelocity New Doppler velocity, for use in Doppler effect.
  */
@@ -2029,7 +2029,7 @@ public class SoundSystem
  * Changes a source's velocity, for use in Doppler effect.  This method is used
  * internally by SoundSystem for thread synchronization, and it can not be
  * called directly - please use the setVelocity() method instead.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param sourcename Identifier for the source.
  * @param x Source's velocity along the world x-axis.
@@ -2049,7 +2049,7 @@ public class SoundSystem
  * Changes the listener's velocity, for use in Doppler effect.  This method is
  * used internally by SoundSystem for thread synchronization, and it can not be
  * called directly - please use the setListenerVelocity() method instead.
- * See {@link paulscode.sound.SoundSystemConfig SoundSystemConfig} for more
+ * See {@link sound.SoundSystemConfig SoundSystemConfig} for more
  * information about Doppler effect.
  * @param x Velocity along the world x-axis.
  * @param y Velocity along the world y-axis.
@@ -2349,7 +2349,7 @@ public class SoundSystem
  * If newCommand is null, all commands are dequeued and executed.  
  * This is automatically used by the sound system, so it is not 
  * likely that a user would ever need to use this method.  
- * See {@link paulscode.sound.CommandObject CommandObject} for more information
+ * See {@link sound.CommandObject CommandObject} for more information
  * about commands.  
  * @param newCommand Command to queue, or null to execute commands.  
  * @return True if more commands exist, false if queue is empty.

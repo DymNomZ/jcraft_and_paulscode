@@ -24,7 +24,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jogg;
+package jcraft.jogg;
 
 public class StreamState{
   byte[] body_data; /* bytes from packet bodies */

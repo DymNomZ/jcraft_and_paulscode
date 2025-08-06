@@ -1,4 +1,4 @@
-package com.jcraft.jorbis;
+package jcraft.jorbis;
 
 class Util{
   static int ilog(int v){

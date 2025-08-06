@@ -1,4 +1,4 @@
-package paulscode.sound;
+package sound;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -105,7 +105,7 @@ public class SoundSystemConfig
 
 /**
  * Handle to the message logger.  The default logger can be changed by 
- * overridding the {@link paulscode.sound.SoundSystemLogger SoundSystemLogger} 
+ * overridding the {@link sound.SoundSystemLogger SoundSystemLogger}
  * class and calling the setLogger() method (must be done BEFORE instantiating 
  * the SoundSystem class!)
  */

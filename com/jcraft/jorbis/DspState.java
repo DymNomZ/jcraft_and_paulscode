@@ -24,7 +24,7 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jorbis;
+package jcraft.jorbis;
 
 public class DspState{
   static final float M_PI=3.1415926539f;

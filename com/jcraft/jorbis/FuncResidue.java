@@ -24,9 +24,9 @@
  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-package com.jcraft.jorbis;
+package jcraft.jorbis;
 
-import com.jcraft.jogg.*;
+import jcraft.jogg.*;
 
 abstract class FuncResidue{
   public static FuncResidue[] residue_P= {new Residue0(), new Residue1(),

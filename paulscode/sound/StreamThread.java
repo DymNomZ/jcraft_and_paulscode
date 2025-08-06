@@ -1,4 +1,4 @@
-package paulscode.sound;
+package sound;
 
 import java.util.LinkedList;
 import java.util.List;

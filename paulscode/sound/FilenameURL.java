@@ -1,4 +1,4 @@
-package paulscode.sound;
+package sound;
 
 import java.net.URL;
 
