@@ -151,6 +151,66 @@ public class LibraryJavaSound extends Library
  /**
  * Initializes Javasound.
  */
+ //modified init
+// @Override
+// public void init() throws SoundSystemException {
+//     MixerRanking mixerRanker = null;
+//     boolean mixerSpecified = false; // A flag to know if we succeeded
+//
+//     // --- NEW, MODIFIED BLOCK TO OVERRIDE MIXER SELECTION ---
+//     // First, check if a preferred mixer name has been set by the user.
+//     if (G_TARGET_MIXER_NAME != null) {
+//         // Try to find and use the preferred mixer.
+//         for (Mixer.Info mixerInfo : AudioSystem.getMixerInfo()) {
+//             if (mixerInfo.getName().equals(G_TARGET_MIXER_NAME)) {
+//                 try {
+//                     mixerRanker = new MixerRanking();
+//                     mixerRanker.rank(mixerInfo); // Rank it to ensure it's usable
+//                     myMixer = AudioSystem.getMixer(mixerInfo);
+//                     mixerRanking(SET, mixerRanker);
+//                     mixerSpecified = true;
+//                     message("Using user-specified mixer: " + mixerInfo.getName());
+//                     break; // Found our mixer, stop searching.
+//                 } catch (java.lang.Exception e) {
+//                     // Problem with this mixer, we'll let it fall through to the default logic.
+//                     message("Warning: Specified mixer '" + G_TARGET_MIXER_NAME + "' was found but could not be used.");
+//                 }
+//             }
+//         }
+//         if (!mixerSpecified) {
+//             message("Warning: Specified mixer '" + G_TARGET_MIXER_NAME + "' not found. Using default discovery.");
+//         }
+//     }
+//     // --- END OF NEW BLOCK ---
+//
+//     // The library's original logic now acts as a fallback if our override fails.
+//     if (myMixer == null) {
+//         message("Searching for default mixer...");
+//         // Check if a mixer has already been defined:
+//         // Nope, try the default Java Sound mixer first:
+//         for (Mixer.Info mixerInfo : AudioSystem.getMixerInfo()) {
+//             if (mixerInfo.getName().equals("Java Sound Audio Engine")) {
+//                 // ... [THE REST OF THE ORIGINAL METHOD IS IDENTICAL] ...
+//                 // It's a good mixer, let's use it:
+//                 myMixer = AudioSystem.getMixer(mixerInfo);
+//                 mixerRanking(SET, mixerRanker);
+//                 break;
+//             }
+//         }
+//         // ... and so on ...
+//         // [PASTE THE REST OF YOUR ORIGINAL init() METHOD HERE, STARTING FROM `if( myMixer == null )`]
+//     }
+//
+//     // Start out at full volume:
+//     setMasterVolume(1.0f);
+//
+//     // Let the user know if everything is ok:
+//     message("JavaSound initialized.");
+//
+//     super.init();
+// }
+ 
+ // original init
     @Override
     public void init() throws SoundSystemException
     {
@@ -223,10 +283,10 @@ public class LibraryJavaSound extends Library
 
         // Start out at full volume:
         setMasterVolume( 1.0f );
-        
+
         // Let the user know if everything is ok:
         message( "JavaSound initialized." );
-        
+
         super.init();
     }
 

@@ -201,12 +201,135 @@ public class ChannelJavaSound extends Channel
             }
         }
     }
+
+    private Mixer getTargetMixer() {
+        // Check if a global target mixer name was set by our SoundManager
+        if (LibraryJavaSound.G_TARGET_MIXER_NAME != null) {
+            Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
+            for (Mixer.Info info : mixerInfo) {
+                if (info.getName().equals(LibraryJavaSound.G_TARGET_MIXER_NAME)) {
+                    // Found our preferred mixer, return it.
+                    return AudioSystem.getMixer(info);
+                }
+            }
+            // If we get here, the preferred mixer wasn't found, so we'll fall back.
+        }
+        // Fall back to using the mixer this channel was created with.
+        return this.myMixer;
+    }
     
 /**
  * Attaches the SoundBuffer to be played back for a normal source.
  * @param buffer SoundBuffer containing the wave data and format to attach
  * @return False if an error occurred.
  */
+// modified attachBuffer
+//public boolean attachBuffer( SoundBuffer buffer )
+//{
+//    // Can only attach a buffer to a normal source:
+//    if( errorCheck( channelType != SoundSystemConfig.TYPE_NORMAL,
+//                    "Buffers may only be attached to non-streaming " +
+//                    "sources" ) )
+//        return false;
+//
+//    // make sure the Mixer exists:
+//    if( errorCheck( myMixer == null,
+//                    "Mixer null in method 'attachBuffer'" ) )
+//        return false;
+//
+//    // make sure the buffer exists:
+//    if( errorCheck( buffer == null,
+//                    "Buffer null in method 'attachBuffer'" ) )
+//        return false;
+//
+//    // make sure the buffer exists:
+//    if( errorCheck( buffer.audioData == null,
+//                    "Buffer missing audio data in method " +
+//                    "'attachBuffer'" ) )
+//        return false;
+//
+//    // make sure there is format information about this sound buffer:
+//    if( errorCheck( buffer.audioFormat == null,
+//                    "Buffer missing format information in method " +
+//                    "'attachBuffer'" ) )
+//        return false;
+//
+//    DataLine.Info lineInfo;
+//    lineInfo = new DataLine.Info( Clip.class, buffer.audioFormat );
+//    if( errorCheck( !AudioSystem.isLineSupported( lineInfo ),
+//                    "Line not supported in method 'attachBuffer'" ) )
+//            return false;
+//
+//    Clip newClip = null;
+//    try {
+//        // --- THIS IS THE MODIFIED BLOCK ---
+//
+//        // This is the only line we're changing inside the try block.
+//        // Instead of getting the line from 'myMixer', we'll get it from a potentially different, better mixer.
+//
+//        Mixer mixerToUse = myMixer; // Start with the default mixer for this channel
+//
+//        // Check if a GLOBAL target mixer name was set
+//        if (LibraryJavaSound.G_TARGET_MIXER_NAME != null) {
+//            Mixer.Info[] mixerInfo = AudioSystem.getMixerInfo();
+//            for (Mixer.Info info : mixerInfo) {
+//                if (info.getName().equals(LibraryJavaSound.G_TARGET_MIXER_NAME)) {
+//                    mixerToUse = AudioSystem.getMixer(info); // We found a better one!
+//                    break;
+//                }
+//            }
+//        }
+//
+//        // Now, get the line from whichever mixer we decided to use.
+//        newClip = (Clip) mixerToUse.getLine(lineInfo);
+//
+//        // --- END OF MODIFIED BLOCK ---
+//
+//    }
+//    catch( Exception e )
+//    {
+//        errorMessage( "Unable to create clip in method 'attachBuffer'" );
+//        printStackTrace( e );
+//        return false;
+//    }
+//
+//    if( errorCheck( newClip == null,
+//                    "New clip null in method 'attachBuffer'" ) )
+//        return false;
+//
+//    // if there was already a clip playing on this channel, remove it now:
+//    if( clip != null )
+//    {
+//        clip.stop();
+//        clip.flush();
+//        clip.close();
+//    }
+//
+//    // Update the clip and format varriables:
+//    clip = newClip;
+//    soundBuffer = buffer;
+//    myFormat = buffer.audioFormat;
+//    newClip = null;
+//
+//    try
+//    {
+//        clip.open( myFormat, buffer.audioData, 0, buffer.audioData.length );
+//    }
+//    catch( Exception e )
+//    {
+//        errorMessage( "Unable to attach buffer to clip in method " +
+//                      "'attachBuffer'" );
+//        printStackTrace( e );
+//        return false;
+//    }
+//
+//    resetControls();
+//
+//    // Success:
+//    return true;
+//}
+
+// original attachBuffer
     public boolean attachBuffer( SoundBuffer buffer )
     {
         // Can only attach a buffer to a normal source:
@@ -214,39 +337,42 @@ public class ChannelJavaSound extends Channel
                         "Buffers may only be attached to non-streaming " +
                         "sources" ) )
             return false;
-        
+
         // make sure the Mixer exists:
-        if( errorCheck( myMixer == null,
-                        "Mixer null in method 'attachBuffer'" ) )
+//        if( errorCheck( myMixer == null,
+//                        "Mixer null in method 'attachBuffer'" ) )
+//            return false;
+        Mixer mixerToUse = getTargetMixer();
+        if( errorCheck( mixerToUse == null, "Mixer null in method 'attachBuffer'" ) )
             return false;
-        
+
         // make sure the buffer exists:
         if( errorCheck( buffer == null,
                         "Buffer null in method 'attachBuffer'" ) )
             return false;
-        
+
         // make sure the buffer exists:
         if( errorCheck( buffer.audioData == null,
                         "Buffer missing audio data in method " +
                         "'attachBuffer'" ) )
             return false;
-        
+
         // make sure there is format information about this sound buffer:
         if( errorCheck( buffer.audioFormat == null,
                         "Buffer missing format information in method " +
                         "'attachBuffer'" ) )
             return false;
-            
+
         DataLine.Info lineInfo;
         lineInfo = new DataLine.Info( Clip.class, buffer.audioFormat );
-        if( errorCheck( !AudioSystem.isLineSupported( lineInfo ), 
+        if( errorCheck( !AudioSystem.isLineSupported( lineInfo ),
                         "Line not supported in method 'attachBuffer'" ) )
                 return false;
-        
+
         Clip newClip = null;
         try
         {
-            newClip = (Clip) myMixer.getLine( lineInfo );
+            newClip = (Clip) mixerToUse.getLine( lineInfo );
         }
         catch( Exception e )
         {
@@ -254,11 +380,11 @@ public class ChannelJavaSound extends Channel
             printStackTrace( e );
             return false;
         }
-        
+
         if( errorCheck( newClip == null,
                         "New clip null in method 'attachBuffer'" ) )
             return false;
-        
+
         // if there was already a clip playing on this channel, remove it now:
         if( clip != null )
         {
@@ -266,13 +392,13 @@ public class ChannelJavaSound extends Channel
             clip.flush();
             clip.close();
         }
-        
+
         // Update the clip and format varriables:
         clip = newClip;
         soundBuffer = buffer;
         myFormat = buffer.audioFormat;
         newClip = null;
-        
+
         try
         {
             clip.open( myFormat, buffer.audioData, 0, buffer.audioData.length );
@@ -284,9 +410,9 @@ public class ChannelJavaSound extends Channel
             printStackTrace( e );
             return false;
         }
-        
+
         resetControls();
-        
+
         // Success:
         return true;
     }
@@ -312,7 +438,10 @@ public class ChannelJavaSound extends Channel
 //modified version
 public boolean resetStream(AudioFormat format) {
     // make sure the Mixer exists
-    if (errorCheck(myMixer == null, "Mixer null in method 'resetStream'"))
+//    if (errorCheck(myMixer == null, "Mixer null in method 'resetStream'"))
+//        return false;
+    Mixer mixerToUse = getTargetMixer(); // Call our new helper
+    if (errorCheck(mixerToUse == null, "Mixer null in method 'resetStream'"))
         return false;
 
     // make sure a format was specified
@@ -345,7 +474,8 @@ public boolean resetStream(AudioFormat format) {
         if (mixer != null) {
             // A specific mixer was found, get the line from IT.
             // logger.message("ChannelJavaSound: Using specified mixer: " + mixer.getMixerInfo().getName(), 0);
-            newSourceDataLine = (SourceDataLine) mixer.getLine(lineInfo);
+//            newSourceDataLine = (SourceDataLine) mixer.getLine(lineInfo);
+            newSourceDataLine = (SourceDataLine) mixerToUse.getLine(lineInfo);
         } else {
             // No specific mixer was found or set, use the original default behavior.
             // logger.message("ChannelJavaSound: Using default mixer.", 0);
